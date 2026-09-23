@@ -3,6 +3,21 @@
 // File ini khusus untuk mengubah isi website (menu, harga,
 // nomor WhatsApp, alamat, dll) TANPA perlu menyentuh kode lain.
 // ============================================================
+//
+// ⚠️  STATUS DATA: MASIH PROTOTYPE / CONTOH
+// Semua angka & teks di file ini BELUM dikonfirmasi ke pemilik
+// usaha. Wajib diverifikasi dulu sebelum website dirilis.
+// Daftar pertanyaannya ada di file CHECKLIST-CLIENT.md.
+// Item yang masih contoh:
+//   1. Harga semua menu
+//   2. Jam operasional
+//   3. Area pengantaran & free ongkir
+//   4. Minimal order (harian & nasi/snack box)
+//   5. Aturan pemesanan (cut-off harian, booking acara H-3/H-7)
+//   6. Nomor WhatsApp
+//   7. Alamat
+//   8. Instagram & email
+// ============================================================
 
 export const BUSINESS = {
   name: 'Dapur Nusa',
@@ -28,6 +43,17 @@ export const BUSINESS = {
     { day: 'Sabtu', time: '06.00 – 15.00' },
     { day: 'Minggu', time: 'Tutup (terima pesanan acara)' },
   ],
+
+  // ---- Aturan pengantaran & pemesanan (masih contoh!) ----
+  deliveryArea: 'Cibinong & sekitarnya',
+  freeDeliveryNote: 'Gratis ongkir untuk pesanan di atas Rp 100.000 (area Cibinong)',
+  minOrderDaily: '1 porsi',
+  minOrderBox: '10 box',
+  // Batas waktu pesan harian; pesanan setelah jam ini masuk besok.
+  dailyCutoff: '09.00',
+  // Berapa hari sebelumnya acara harus dibooking.
+  eventLeadShort: 'H-3',
+  eventLeadLong: 'H-7',
 }
 
 // Pesan otomatis yang terisi saat orang menekan tombol WhatsApp.
@@ -105,50 +131,57 @@ export const SERVICES = [
   {
     icon: 'pi pi-calendar-clock',
     title: 'Pesan Harian',
-    desc: 'Makan siang tiap hari tanpa ribet. Pesan sebelum jam 9 pagi, antar jam makan siang ke rumah atau kantor Anda.',
-    points: ['Order minimal 1 porsi', 'Antar area Cibinong & sekitarnya', 'Bisa langganan mingguan'],
+    desc: `Makan siang tiap hari tanpa ribet. Pesan sebelum pukul ${BUSINESS.dailyCutoff}, antar jam makan siang ke rumah atau kantor Anda.`,
+    points: [`Order minimal ${BUSINESS.minOrderDaily}`, `Antar area ${BUSINESS.deliveryArea}`, 'Bisa langganan mingguan'],
   },
   {
     icon: 'pi pi-box',
     title: 'Nasi Box & Snack Box',
     desc: 'Paket lengkap untuk rapat kantor, seminar, pengajian, atau arisan. Sudah termasuk dus, sendok, dan air mineral.',
-    points: ['Mulai 10 box', 'Bisa custom menu & label', 'Free pengantaran area tertentu'],
+    points: [`Mulai ${BUSINESS.minOrderBox}`, 'Bisa custom menu & label', 'Free pengantaran area tertentu'],
   },
   {
     icon: 'pi pi-users',
     title: 'Pesanan Acara',
     desc: 'Prasmanan rice box besar, tumpeng, sampai paket buffet kecil untuk hajatan keluarga dan kantor.',
-    points: ['Konsultasi menu gratis', 'Cetak label nama acara', 'Booking H-3 sampai H-7'],
+    points: ['Konsultasi menu gratis', 'Cetak label nama acara', `Booking ${BUSINESS.eventLeadShort} sampai ${BUSINESS.eventLeadLong}`],
   },
 ]
 
 // ------------------------------------------------------------
 // TESTIMONI PELANGGAN
+// ⚠️ Semua testimoni di bawah ini CONTOH (placeholder), bukan
+// testimoni asli. Ganti dengan testimoni asli pelanggan saat
+// client mengirimkannya — lihat CHECKLIST-CLIENT.md.
 // ------------------------------------------------------------
 export const TESTIMONIALS = [
   {
     name: 'Bu Ratna',
     role: 'Ibu Rumah Tangga — Arisan Sukamaju',
-    text: 'Tiap arisan bulanan selalu pesan nasi box di Dapur Nusa. Anak-anak suka gepreknya, ibu-ibu suka sayur lodehnya. Rasa konsisten dan selalu tepat waktu!',
+    text: 'Nasi box-nya enak dan datang tepat waktu. Cocok banget buat acara arisan.',
     initial: 'R',
+    placeholder: true,
   },
   {
     name: 'Pak Andi',
     role: 'Admin Kantor PT Cahaya Nusantara',
-    text: 'Langganan coffee break kantor kami dari 2023. Snack box-nya rapi, label per-box jelas, dan yang paling penting: tidak pernah telat. Recommended.',
+    text: 'Snack box-nya rapi dan tidak pernah telat. Langganan coffee break kantor kami.',
     initial: 'A',
+    placeholder: true,
   },
   {
     name: 'Dina',
-    role: 'Mahasiswi — Kos Sukamaju',
-    text: 'Rice bowl ayam suwir kemangi-nya juara. Porsinya kenyang, harganya mahasiswa-friendly. Sering nambah seminggu dua kali.',
+    role: 'Pelanggan Rice Bowl',
+    text: 'Rice bowl ayam suwir kemangi-nya juara. Porsi kenyang, harganya bersahabat.',
     initial: 'D',
+    placeholder: true,
   },
   {
     name: 'Bu Wulan',
     role: 'Kepala Sekolah TK Tunas Bangsa',
-    text: 'Acara pensiunan guru kami dianter 80 nasi box lengkap dengan label. Rasa homestyle banget, banyak yang minta nomor Dapur Nusa.',
+    text: 'Acara sekolah kami dianter 80 nasi box lengkap dengan label. Rasa homestyle banget.',
     initial: 'W',
+    placeholder: true,
   },
 ]
 
@@ -179,7 +212,7 @@ export const STEPS = [
 // Ganti dengan foto makanan asli Dapur Nusa kapan pun.
 // (Tema warna diatur di src/main.jsx + src/styles/global.css)
 // ------------------------------------------------------------
-const img = (id, w = 900) =>
+const img = (id, w = 640) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${Math.round(w * 0.75)}&q=70`
 
 export const IMAGES = {
@@ -190,5 +223,25 @@ export const IMAGES = {
     riceBowl: img('photo-1567620905732-2d1ec7ab7445'),
     geprek: img('photo-1626645738196-c2a7c87a8f58'),
     snackBox: img('photo-1541614101331-1a5a3a194e92'),
+  },
+  // Foto per menu item (rasio 4:3). Ganti dengan foto asli per menu —
+  // prioritas: menu yang paling banyak dijual.
+  dishes: {
+    'Nasi Box Ayam Bakar Madu': img('photo-1517244683847-7456b63c5969'),
+    'Nasi Box Ayam Geprek': img('photo-1626645738196-c2a7c87a8f58'),
+    'Nasi Box Empal Gentong': img('photo-1544025162-d76694265947'),
+    'Nasi Box Sayur Lodeh Telur': img('photo-1547592180-85f173990554'),
+    'Rice Bowl Ayam Suwir Kemangi': img('photo-1567620905732-2d1ec7ab7445'),
+    'Rice Bowl Beef Teriyaki': img('photo-1600891964092-4316c288032e'),
+    'Rice Bowl Ayam Katsu Curry': img('photo-1579871494447-9811cf80d66c'),
+    'Rice Bowl Udang Pedas Manis': img('photo-1565557623262-b51c2513a641'),
+    'Geprek Original': img('photo-1626645738196-c2a7c87a8f58'),
+    'Geprek Mozarella': img('photo-1608039829572-78524f79c4c7'),
+    'Geprek Sambal Matah': img('photo-1598515214211-89d3c73ae83b'),
+    'Geprek Telur Asin': img('photo-1619881590738-a111d176d906'),
+    'Snack Box Mini A': img('photo-1541614101331-1a5a3a194e92'),
+    'Snack Box Mini B': img('photo-1573821663912-6df460f9c684'),
+    'Snack Box Premium': img('photo-1555507036-ab1f4038808a'),
+    'Puding Cup (isi 10)': img('photo-1488477181946-6428a0291777'),
   },
 }

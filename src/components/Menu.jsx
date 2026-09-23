@@ -18,7 +18,14 @@ function PanelContent({ category }) {
   return (
     <div className="menu__panel">
       <div className="menu__panel-head">
-        <img src={IMAGES.categories[category.id]} alt={category.name} loading="lazy" />
+        <img
+          src={IMAGES.categories[category.id]}
+          alt={`Aneka ${category.name}`}
+          width="96"
+          height="96"
+          loading="lazy"
+          decoding="async"
+        />
         <div>
           <h3>{category.name}</h3>
           <p>{category.caption}</p>
@@ -28,9 +35,20 @@ function PanelContent({ category }) {
       <ul className="menu__list">
         {category.items.map((dish) => (
           <li key={dish.name} className="menu__item">
-            <div className="menu__item-info">
-              <h4>{dish.name}</h4>
-              <p>{dish.desc}</p>
+            <div className="menu__item-main">
+              <img
+                className="menu__item-photo"
+                src={IMAGES.dishes[dish.name] || IMAGES.categories[category.id]}
+                alt={dish.name}
+                width="88"
+                height="66"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="menu__item-info">
+                <h4>{dish.name}</h4>
+                <p>{dish.desc}</p>
+              </div>
             </div>
             <div className="menu__item-action">
               <span className="menu__price">Rp {dish.price.toLocaleString('id-ID')}</span>
@@ -49,8 +67,8 @@ function PanelContent({ category }) {
       </ul>
 
       <p className="menu__note">
-        <i className="pi pi-info-circle" /> Harga bisa berubah mengikuti bahan — harga final
-        dikonfirmasi di WhatsApp. Minimal pesan nasi box &amp; snack box: 10 box.
+        <i className="pi pi-info-circle" /> Harga final dikonfirmasi di WhatsApp. Minimal pesan nasi
+        box &amp; snack box: {BUSINESS.minOrderBox}. {BUSINESS.freeDeliveryNote}.
       </p>
     </div>
   )
