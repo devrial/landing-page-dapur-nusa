@@ -212,6 +212,22 @@
   border-bottom: none;
 }
 
+.menu__item-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.menu__item-photo {
+  width: 88px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  background: var(--cream-100);
+}
+
 .menu__item-info h4 {
   font-size: 1rem;
   font-weight: 700;
@@ -400,6 +416,34 @@
 .testimonial figcaption small {
   font-size: 0.78rem;
   color: var(--brown-500);
+}
+
+/* Catatan "testimoni masih contoh" — hilang otomatis saat data asli diisi */
+.testimonials__notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 980px;
+  margin: 18px auto 0;
+  padding: 12px 16px;
+  background: var(--cream-100);
+  border: 1px dashed var(--brown-300);
+  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  color: var(--brown-700);
+}
+
+.testimonials__notice i {
+  color: var(--green-700);
+  margin-top: 2px;
+}
+
+.testimonials__notice code {
+  font-size: 0.8rem;
+  background: var(--cream-200);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--brown-900);
 }
 
 /* ============================================================

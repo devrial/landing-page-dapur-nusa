@@ -1,12 +1,6 @@
 import { Button } from 'primereact/button'
 import { WA_ORDER, BUSINESS, IMAGES } from '../data.js'
 
-const HIGHLIGHTS = [
-  { icon: 'pi pi-sparkles', text: 'Dimasak fresh setiap hari' },
-  { icon: 'pi pi-truck', text: 'Antar ke kantor & acara' },
-  { icon: 'pi pi-whatsapp', text: 'Pesan gampang lewat WA' },
-]
-
 export default function Hero() {
   return (
     <section className="hero" id="beranda">
@@ -44,14 +38,6 @@ export default function Hero() {
               Lihat Menu <i className="pi pi-arrow-down" />
             </a>
           </div>
-
-          <ul className="hero__highlights">
-            {HIGHLIGHTS.map((h) => (
-              <li key={h.text}>
-                <i className={`pi ${h.icon}`} /> {h.text}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="hero__media">
@@ -59,21 +45,20 @@ export default function Hero() {
             className="hero__img-main"
             src={IMAGES.heroMain}
             alt="Aneka masakan rumahan Dapur Nusa"
+            width="1100"
+            height="825"
             loading="eager"
+            decoding="async"
           />
           <img
             className="hero__img-card"
             src={IMAGES.heroSecondary}
             alt="Nasi box Dapur Nusa"
+            width="700"
+            height="525"
             loading="lazy"
+            decoding="async"
           />
-          <div className="hero__float hero__float--delivery">
-            <i className="pi pi-truck" />
-            <div>
-              <strong>Gratis ongkir</strong>
-              <span>area Cibinong</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

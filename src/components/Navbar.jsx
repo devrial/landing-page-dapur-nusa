@@ -86,7 +86,14 @@ export default function Navbar() {
           }}
         />
         <p className="nav-drawer__meta">
-          <i className="pi pi-clock" /> Senin–Sabtu · 06.00–19.00
+          <i className="pi pi-clock" />
+          <span className="nav-drawer__hours">
+            {BUSINESS.operationalHours.map((h) => (
+              <span key={h.day}>
+                {h.day}: {h.time}
+              </span>
+            ))}
+          </span>
         </p>
       </Sidebar>
     </header>

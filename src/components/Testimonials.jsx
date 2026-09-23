@@ -9,6 +9,8 @@ const Stars = () => (
 )
 
 export default function Testimonials() {
+  const hasPlaceholder = TESTIMONIALS.some((t) => t.placeholder)
+
   return (
     <section className="testimonials section" id="testimoni">
       <div className="container">
@@ -37,6 +39,17 @@ export default function Testimonials() {
             </figure>
           ))}
         </div>
+
+        {hasPlaceholder && (
+          <p className="testimonials__notice">
+            <i className="pi pi-info-circle" />
+            <span>
+              Testimoni di atas masih <strong>contoh</strong>. Ganti dengan testimoni asli pelanggan
+              di <code>src/data.js</code> — catatan ini hilang otomatis setelah flag{' '}
+              <code>placeholder</code> dihapus.
+            </span>
+          </p>
+        )}
       </div>
     </section>
   )
